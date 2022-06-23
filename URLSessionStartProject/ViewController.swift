@@ -38,37 +38,16 @@ class ViewController: UIViewController {
 
 final class GetNameEndpoint: ObjectResponseEndpoint<String> {
     
-    let publicKey = "5e89433b3d4a0dd170543ab353c8e33d"
-    let privateKey = "f6a80a375b637fd8ef9d948f44d8cc56d08fcbfb"
-    let ts = NSDate().timeIntervalSinceReferenceDate
-    let hash: String = ""
-    
     override var method: RESTClient.RequestType { return .get }
-    override var path: String { "/v1/public/characters" }
-    // override var path: String { "/v1/cards" }
+    override var path: String { "/v1/cards" }
     // override var queryItems: [URLQueryItem(name: "id", value: "1")]?
     
     override init() {
         super.init()
 
-//        queryItems = [URLQueryItem(name: "name", value: "Black Lotus")]
-        queryItems = [URLQueryItem(name: "name", value: "Spider-Man"),
-                      URLQueryItem(name: "ts", value: "\(ts)"),
-                      URLQueryItem(name: "apikey", value: publicKey),
-                      URLQueryItem(name: "hash", value: hash.md5(string: "\(ts)" + privateKey + publicKey))]
-    }
+        queryItems = [URLQueryItem(name: "name", value: "Black Lotus")]
     
 }
-
-
-
-
-
-
-
-
-
-
 
 func decodeJSONOld() {
     let str = """
