@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CFDE5612864498200379B90 /* String + MD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFDE5602864498200379B90 /* String + MD.swift */; };
 		8F7518E627549D62001F05F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7518E527549D62001F05F2 /* AppDelegate.swift */; };
 		8F7518E827549D62001F05F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7518E727549D62001F05F2 /* SceneDelegate.swift */; };
 		8F7518EA27549D62001F05F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7518E927549D62001F05F2 /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8CFDE5602864498200379B90 /* String + MD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + MD.swift"; sourceTree = "<group>"; };
 		8F7518E227549D62001F05F2 /* URLSessionStartProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = URLSessionStartProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F7518E527549D62001F05F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F7518E727549D62001F05F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				8F7518EE27549D65001F05F2 /* Assets.xcassets */,
 				8F7518F027549D65001F05F2 /* LaunchScreen.storyboard */,
 				8F7518F327549D65001F05F2 /* Info.plist */,
+				8CFDE5602864498200379B90 /* String + MD.swift */,
 			);
 			path = URLSessionStartProject;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				8F7518E627549D62001F05F2 /* AppDelegate.swift in Sources */,
 				8FE4B91E2754A080005B617D /* RESTClient.swift in Sources */,
 				8FE4B9222754A0EF005B617D /* EndpointClientError.swift in Sources */,
+				8CFDE5612864498200379B90 /* String + MD.swift in Sources */,
 				8F7518E827549D62001F05F2 /* SceneDelegate.swift in Sources */,
 				8FE4B9242754A118005B617D /* ServerError.swift in Sources */,
 				8FE4B91A2754A009005B617D /* AppSettings.swift in Sources */,
