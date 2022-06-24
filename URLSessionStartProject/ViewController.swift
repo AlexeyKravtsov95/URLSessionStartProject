@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CryptoKit
 
 class ViewController: UIViewController {
 
@@ -19,48 +20,43 @@ class ViewController: UIViewController {
     
     func executeCall() {
         let endpoint = GetNameEndpoint()
-        let completion: EndpointClient.ObjectEndpointCompletion<String> = { result, response in
+        let completion: EndpointClient.ObjectEndpointCompletion<Card> = { result, response in
             guard let responseUnwrapped = response else { return }
 
             print("\n\n response = \(responseUnwrapped.allHeaderFields) ;\n \(responseUnwrapped.statusCode) \n")
             switch result {
-            case .success(let team):
-                print("team = \(team)")
+            case .success(let card):
+                for value in card.cards {
+                    print("""
+                             Имя карты: \(value.name ?? "")
+                             Тип: \(value.type ?? "")
+                             Подтип: \(value.subtypes ?? "")
+                             Редкость:\(value.rarity ?? "")
+                             Сила: \(value.power ?? "")
+                        """)
+                    
+                }
                 
             case .failure(let error):
                 print(error)
             }
         }
-        
         endpointClient.executeRequest(endpoint, completion: completion)
     }
-
-
 }
 
-final class GetNameEndpoint: ObjectResponseEndpoint<String> {
+final class GetNameEndpoint: ObjectResponseEndpoint<Card> {
     
     override var method: RESTClient.RequestType { return .get }
     override var path: String { "/v1/cards" }
-//    override var queryItems: [URLQueryItem(name: "id", value: "1")]?
+    // override var queryItems: [URLQueryItem(name: "id", value: "1")]?
     
     override init() {
         super.init()
 
         queryItems = [URLQueryItem(name: "name", value: "Black Lotus")]
     }
-    
 }
-
-
-
-
-
-
-
-
-
-
 
 func decodeJSONOld() {
     let str = """
@@ -79,4 +75,3 @@ func decodeJSONOld() {
         print("Failed to load: \(error.localizedDescription)")
     }
 }
-
