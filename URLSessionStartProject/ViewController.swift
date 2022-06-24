@@ -20,13 +20,22 @@ class ViewController: UIViewController {
     
     func executeCall() {
         let endpoint = GetNameEndpoint()
-        let completion: EndpointClient.ObjectEndpointCompletion<String> = { result, response in
+        let completion: EndpointClient.ObjectEndpointCompletion<Card> = { result, response in
             guard let responseUnwrapped = response else { return }
 
             print("\n\n response = \(responseUnwrapped.allHeaderFields) ;\n \(responseUnwrapped.statusCode) \n")
             switch result {
-            case .success(let team):
-                print("team = \(team)")
+            case .success(let card):
+                for value in card.cards {
+                    print("""
+                             Имя карты: \(value.name ?? "")
+                             Тип: \(value.type ?? "")
+                             Подтип: \(value.subtypes ?? "")
+                             Редкость:\(value.rarity ?? "")
+                             Сила: \(value.power ?? "")
+                        """)
+                    
+                }
                 
             case .failure(let error):
                 print(error)
@@ -36,7 +45,7 @@ class ViewController: UIViewController {
     }
 }
 
-final class GetNameEndpoint: ObjectResponseEndpoint<String> {
+final class GetNameEndpoint: ObjectResponseEndpoint<Card> {
     
     override var method: RESTClient.RequestType { return .get }
     override var path: String { "/v1/cards" }
@@ -46,7 +55,7 @@ final class GetNameEndpoint: ObjectResponseEndpoint<String> {
         super.init()
 
         queryItems = [URLQueryItem(name: "name", value: "Black Lotus")]
-    
+    }
 }
 
 func decodeJSONOld() {
@@ -66,4 +75,3 @@ func decodeJSONOld() {
         print("Failed to load: \(error.localizedDescription)")
     }
 }
-
